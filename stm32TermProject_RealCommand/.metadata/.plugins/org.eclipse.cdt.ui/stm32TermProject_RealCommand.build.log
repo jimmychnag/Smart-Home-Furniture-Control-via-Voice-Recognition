@@ -1,0 +1,10 @@
+22:35:27 **** Incremental Build of configuration Debug for project stm32TermProject_RealCommand ****
+make -j20 all 
+arm-none-eabi-size  stm32TermProject_RealCommand.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 212696	   2944	 511728	 727368	  b1948	stm32TermProject_RealCommand.elf
+Finished building: default.size.stdout
+ 
+
+22:35:27 Build Finished. 0 errors, 0 warnings. (took 251ms)
+
