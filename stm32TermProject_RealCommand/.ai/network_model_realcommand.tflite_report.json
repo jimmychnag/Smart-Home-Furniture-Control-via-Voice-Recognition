@@ -1,0 +1,419 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --target stm32l4 --name network -m D:/Stm32Project/SideProject/cubeide/stm32TermProject_RealCommand/model_realcommand.tflite --compression medium --verbosity 1 -O time --workspace C:/Users/a0979/AppData/Local/Temp/mxAI_workspace45161814606390010853458047237361018 --output C:/Users/a0979/.stm32cubemx/network_output",
+    "cli_version": {
+        "extra": "20049",
+        "major": 2,
+        "micro": 0,
+        "minor": 0
+    },
+    "cli_version_str": "2.0.0-20049",
+    "code_size": 0,
+    "compression": [],
+    "date_time": "2025-05-30T20:48:52+0800",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "0xc2073faf439ae1afa9b189e815febaa2",
+    "inputs": [
+        "serving_default_input_layer0"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 63984,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        129,
+                        1,
+                        124
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_input_layer0",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 4096,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 4096,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        32,
+                        1,
+                        32
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_input_layer0"
+            ],
+            "name": "resize_0",
+            "original": "RESIZE_BILINEAR",
+            "type": "Resize"
+        },
+        {
+            "c_id": [
+                1,
+                2
+            ],
+            "extras": {
+                "n_macc": 259232,
+                "n_params": 320,
+                "psize": 1280,
+                "rom_output": {
+                    "c_size": 115200,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        30,
+                        32,
+                        30
+                    ]
+                },
+                "rom_size": 1280
+            },
+            "id": 1,
+            "inputs": [
+                "resize_0"
+            ],
+            "name": "conv2d_1",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 28800,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 115200,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        30,
+                        32,
+                        30
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conv2d_1"
+            ],
+            "name": "nl_1_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                3,
+                4
+            ],
+            "extras": {
+                "n_macc": 3612688,
+                "n_params": 4624,
+                "psize": 18496,
+                "rom_output": {
+                    "c_size": 50176,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        28,
+                        16,
+                        28
+                    ]
+                },
+                "rom_size": 18496
+            },
+            "id": 2,
+            "inputs": [
+                "nl_1_nl"
+            ],
+            "name": "conv2d_2",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 12544,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 50176,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        28,
+                        16,
+                        28
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "conv2d_2"
+            ],
+            "name": "nl_2_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                5
+            ],
+            "extras": {
+                "n_macc": 12544,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 12544,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        14,
+                        16,
+                        14
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "nl_2_nl"
+            ],
+            "name": "pool_3",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "pool_3"
+            ],
+            "name": "reshape_4",
+            "original": "RESHAPE",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                6,
+                7
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 75264,
+                "psize": 301056,
+                "rom_size": 37792
+            },
+            "id": 5,
+            "inputs": [],
+            "name": "arith_constant5",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 24,
+                "psize": 96,
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [],
+            "name": "arith_constant6",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 75288,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 96,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        24
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "reshape_4",
+                "arith_constant5",
+                "arith_constant6"
+            ],
+            "name": "gemm_5",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 24,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 96,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        24
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "gemm_5"
+            ],
+            "name": "nl_5_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                8
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 120,
+                "psize": 480,
+                "rom_size": 500
+            },
+            "id": 6,
+            "inputs": [],
+            "name": "arith_constant4",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 5,
+                "psize": 20,
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [],
+            "name": "arith_constant7",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 125,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 20,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        5
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [
+                "nl_5_nl",
+                "arith_constant4",
+                "arith_constant7"
+            ],
+            "name": "gemm_6",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        }
+    ],
+    "model_files": [
+        "D:\\Stm32Project\\SideProject\\cubeide\\stm32TermProject_RealCommand\\model_realcommand.tflite"
+    ],
+    "model_n_params": 80357,
+    "model_name": "model_realcommand",
+    "model_size": 321428,
+    "model_type": "tflite",
+    "name": "network",
+    "outputs": [
+        "gemm_6"
+    ],
+    "ram_io_size": [
+        0,
+        0
+    ],
+    "ram_size": 166528,
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 63984,
+            "c_type": "float",
+            "name": "serving_default_input_layer0"
+        }
+    ],
+    "rom_n_macc": 4005341,
+    "rom_outputs": [
+        {
+            "c_size": 20,
+            "c_type": "float",
+            "name": "gemm_6"
+        }
+    ],
+    "rom_size": 58068,
+    "strategy": "",
+    "tools_api_version": "2.0.0-20049",
+    "tools_version": "2.0.0-20049",
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}
